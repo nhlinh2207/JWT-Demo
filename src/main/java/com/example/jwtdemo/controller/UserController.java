@@ -42,7 +42,7 @@ public class UserController {
 
     @ApiOperation(value = "Test role with JWT", response = ResponseObject.class, authorizations = {@Authorization(value = "JWT")})
     @GetMapping(path = "/test-role")
-    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public ResponseEntity<?> testRole() {
         log.info("Controller: Test role");
         ResponseObject<String> res = new ResponseObject<>(true, ResponseStatus.DO_SERVICE_SUCCESSFUL);

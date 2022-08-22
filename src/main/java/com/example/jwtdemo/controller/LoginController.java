@@ -64,7 +64,7 @@ public class LoginController {
             final CustomUserPrincipal userDetails = jwtUserDetailsService.loadUserByUsername(user.getUsername().toString());
             final String access_token = jwtTokenUtil.generateToken(userDetails);
             ArrayList<GrantedAuthority> role = new ArrayList<>(userDetails.getAuthorities());
-            role.removeIf(s -> !s.getAuthority().contains("ROLE_"));
+           // role.removeIf(s -> !s.getAuthority().contains("ROLE_"));
             ResponseObject<?> res = null;
             res = subscriberNull(user, userDetails, access_token, role);
             return ResponseEntity.ok(res);
